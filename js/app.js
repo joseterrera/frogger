@@ -1,11 +1,22 @@
+// Player loses one life when colliying with the enemy
+//Player gets points for collecting a gem
+//If player collides with enemy, player loses a life.
+//After 3 times of colliding, game restarts.
+
+
 // Enemies our player must avoid
-var Enemy = function() {
+// We need to determine the enemies position and their speed. 
+//we do it via pseudo-classical pattern
+var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+    this.x = x;
+    this.y = y;
+    this.speed = speed;
 }
 
 // Update the enemy's position, required method for game
@@ -14,6 +25,11 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    if (this.x < 505) {
+    this.x +=4;
+} else {
+    this.x = -300;
+}
 }
 
 // Draw the enemy on the screen, required method for game
@@ -24,10 +40,53 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+var Player = function Player(x,y,speed) {
+    this.sprite = 'images/char-boy.png';
+    this.x = x,
+    this.y = y,
+    this.speed = speed
+}
+
+
+
+Player.prototype.update = function(dt) {
+
+
+}
+
+Player.prototype.render = function() {
+ ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
+
+Player.prototype.handleInput = function(key) {
+    if (key === 'left' && this.x > 0) {
+        this.x -= 101;
+    } else if (key === 'right' && this.x < 395) {
+        this.x += 101;
+    } else if (key === 'up' && this.y > 0) {
+        this.y -= 83;
+    } else if (key === 'down' && this.y < 400) {
+        this.y += 83;
+    }
+}
+
+var player = new Player(200,430, 20);
+
+
+
 
 
 // Now instantiate your objects.
+
 // Place all enemy objects in an array called allEnemies
+
+var enemy1 = new Enemy(-100,60, 100);
+var enemy2 = new Enemy(-100, 180, 100);
+var enemy3 = new Enemy(-100, 240, 150);
+var enemy4 = new Enemy(-100, 120, 300);
+var allEnemies = ["enemy1", "enemy2", "enemy3", "enemy4"];
+
+// .map(function(){return new Enemy(0,200);});
 // Place the player object in a variable called player
 
 
