@@ -28,7 +28,7 @@ Enemy.prototype.update = function(dt) {
     if (this.x < 505) {
     this.x +=4;
 } else {
-    this.x = -300;
+    this.x = -100;
 }
 }
 
@@ -79,14 +79,7 @@ var player = new Player(200,430, 20);
 // Now instantiate your objects.
 
 // Place all enemy objects in an array called allEnemies
-
-var enemy1 = new Enemy(-100,60, 100);
-var enemy2 = new Enemy(-100, 180, 100);
-var enemy3 = new Enemy(-100, 240, 150);
-var enemy4 = new Enemy(-100, 120, 300);
-var allEnemies = ["enemy1", "enemy2", "enemy3", "enemy4"];
-
-// .map(function(){return new Enemy(0,200);});
+var allEnemies = [1].map(function(){return new Enemy(0,200);});
 // Place the player object in a variable called player
 
 
