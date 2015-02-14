@@ -80,7 +80,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
     }
 
     /* This is called by the update function  and loops through all of the
@@ -103,6 +103,15 @@ var Engine = (function(global) {
      * they are flipbooks creating the illusion of animation but in reality
      * they are just drawing the entire screen over and over.
      */
+
+function checkCollisions(){
+    for(var enemy = 0; enemy < allEnemies.length;enemy++){
+        if(player.x < allEnemies[enemy].x + 50 && player.x + 50 > allEnemies[enemy].x && player.y < allEnemies[enemy].y + 50 && player.y + 50 > allEnemies[enemy].y ) {
+            player.reset();
+        }
+    }
+}
+
     function render() {
         /* This array holds the relative URL to the image used
          * for that particular row of the game level.

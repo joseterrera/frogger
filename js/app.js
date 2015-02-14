@@ -57,6 +57,11 @@ Player.prototype.update = function(dt) {
 Player.prototype.render = function() {
  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
+//when the player hits a bug, the game resets. 
+Player.prototype.reset = function() {
+    this.x = 100;
+    this.y = 400;
+}
 
 Player.prototype.handleInput = function(key) {
     if (key === 'left' && this.x > 0) {
@@ -79,7 +84,14 @@ var player = new Player(200,430, 20);
 // Now instantiate your objects.
 
 // Place all enemy objects in an array called allEnemies
-var allEnemies = [1].map(function(){return new Enemy(0,200);});
+//push enemies into the array with a location
+var allEnemies = [];
+(function setEnemies(){
+    allEnemies.push(new Enemy(-2, 60));
+    allEnemies.push(new Enemy(-2, 100));
+    allEnemies.push(new Enemy(-2,150));
+    allEnemies.push(new Enemy(-2,220));
+}());
 // Place the player object in a variable called player
 
 

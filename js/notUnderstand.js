@@ -13,3 +13,11 @@ Enemy.prototype.update = function(dt) {
     }
 
 }
+
+function checkCollisions(){
+	for(var enemy = 0; enemy < allEnemies.length;enemy++){
+		if(player.x < allEnemies[enemy].x + 50 && player.x + 50 > allEnemies[enemy].x && player.y < allEnemies[enemy].y + 50 && player.y + 50 > allEnemies[enemy].y ) {
+			player.reset();
+		}
+	}
+}
