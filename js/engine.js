@@ -80,7 +80,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        checkCollisions();
+        // checkCollisions();
     }
 
     /* This is called by the update function  and loops through all of the
@@ -111,7 +111,7 @@ function checkCollisions(){
         }
     }
 }
-
+     
     function render() {
         /* This array holds the relative URL to the image used
          * for that particular row of the game level.

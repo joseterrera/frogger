@@ -3,6 +3,10 @@
 //If player collides with enemy, player loses a life.
 //After 3 times of colliding, game restarts.
 
+var lives = 3;
+var score = 0;
+
+
 
 // Enemies our player must avoid
 // We need to determine the enemies position and their speed. 
@@ -26,7 +30,7 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     if (this.x < 505) {
-    this.x +=4;
+    this.x += (this.speed * dt);
 } else {
     this.x = -100;
 }
@@ -51,7 +55,12 @@ var Player = function Player(x,y,speed) {
 
 Player.prototype.update = function(dt) {
 
-
+//when player reaches water, game resets
+if(this.y < 25) {
+    this.reset();
+//console.log score??
+console.log(score += 10);
+}
 }
 
 Player.prototype.render = function() {
@@ -87,10 +96,10 @@ var player = new Player(200,430, 20);
 //push enemies into the array with a location
 var allEnemies = [];
 (function setEnemies(){
-    allEnemies.push(new Enemy(-2, 60));
-    allEnemies.push(new Enemy(-2, 100));
-    allEnemies.push(new Enemy(-2,150));
-    allEnemies.push(new Enemy(-2,220));
+    allEnemies.push(new Enemy(-2, 60, 250));
+    allEnemies.push(new Enemy(-2, 100, 400));
+    allEnemies.push(new Enemy(-2,150, 150));
+    allEnemies.push(new Enemy(-2,220, 300));
 }());
 // Place the player object in a variable called player
 
