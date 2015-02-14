@@ -5,6 +5,7 @@
 
 var lives = 3;
 var score = 0;
+var level = 0;
 
 
 
@@ -60,6 +61,10 @@ if(this.y < 25) {
     this.reset();
 //console.log score??
 console.log(score += 10);
+document.getElementById("score").innerHTML = "Score: " + score;
+document.getElementById("score").innerHTML = "Lives: " + lives;
+document.getElementById("level").innerHTML = "Level: " + level;
+
 }
 }
 
@@ -70,6 +75,8 @@ Player.prototype.render = function() {
 Player.prototype.reset = function() {
     this.x = 100;
     this.y = 400;
+    level += 1;
+    score += 10;
 }
 
 Player.prototype.handleInput = function(key) {
@@ -84,7 +91,31 @@ Player.prototype.handleInput = function(key) {
     }
 }
 
+
+var Gems = function(){
+    //we add the image, and we set it so it appears randomly
+    this.sprite = 'images/Gem Orange.png';
+       this.x = 20 + 120 * (Math.floor(Math.random() * 4));
+    this.y = 100 + 50 * (Math.floor(Math.random() * 4));
+}
+ 
+
+Gems.prototype.update = function(dt) {
+    // You should multiply any movement by the dt parameter
+    // which will ensure the game runs at the same speed for
+    // all computers.
+    this.x * (dt);
+    this.y * (dt);
+}
+
+// Draw the gems on the screen, required method for game
+Gems.prototype.render = function() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+
+
 var player = new Player(200,430, 20);
+var gems = new Gems();
 
 
 

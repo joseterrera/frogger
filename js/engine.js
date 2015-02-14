@@ -108,6 +108,9 @@ function checkCollisions(){
     for(var enemy = 0; enemy < allEnemies.length;enemy++){
         if(player.x < allEnemies[enemy].x + 50 && player.x + 50 > allEnemies[enemy].x && player.y < allEnemies[enemy].y + 50 && player.y + 50 > allEnemies[enemy].y ) {
             player.reset();
+            console.log('you got hit');
+            lives - 1;
+            console.log(lives);
         }
     }
 }
@@ -162,6 +165,7 @@ function checkCollisions(){
         });
 
         player.render();
+        gems.render();
     }
 
     /* This function does nothing but it could have been a good place to
@@ -181,7 +185,9 @@ function checkCollisions(){
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/Gem Orange.png'
+
     ]);
     Resources.onReady(init);
 
