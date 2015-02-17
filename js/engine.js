@@ -81,6 +81,7 @@ var Engine = (function(global) {
     function update(dt) {
         updateEntities(dt);
         checkCollisions();
+        gemCollisions();
     }
 
     /* This is called by the update function  and loops through all of the
@@ -114,6 +115,15 @@ function checkCollisions(){
         }
     }
 }
+function gemCollisions(){
+
+        if(player.x < gems.x + 50 && player.x + 50 > gems.x && player.y < gems.y + 50 && player.y + 50 > gems.y ) {
+            console.log('you earned a gem');
+       
+
+    }
+}
+
 
     function render() {
         /* This array holds the relative URL to the image used
@@ -186,7 +196,9 @@ function checkCollisions(){
         'images/grass-block.png',
         'images/enemy-bug.png',
         'images/char-boy.png',
-        'images/Gem Orange.png'
+        'images/Gem Orange.png',
+        'images/Heart.png'
+
 
     ]);
     Resources.onReady(init);

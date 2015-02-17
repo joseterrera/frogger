@@ -127,10 +127,10 @@ var gems = new Gems();
 //push enemies into the array with a location
 var allEnemies = [];
 (function setEnemies(){
-    allEnemies.push(new Enemy(-2, 60, 250));
-    allEnemies.push(new Enemy(-2, 100, 400));
+    allEnemies.push(new Enemy(-2, 60, 50));
+    allEnemies.push(new Enemy(-2, 100, 100));
     allEnemies.push(new Enemy(-2,150, 150));
-    allEnemies.push(new Enemy(-2,220, 300));
+    allEnemies.push(new Enemy(-2,220, 100));
 }());
 // Place the player object in a variable called player
 
