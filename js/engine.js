@@ -119,7 +119,7 @@ function gemCollisions(){
 
         if(player.x < gems.x + 50 && player.x + 50 > gems.x && player.y < gems.y + 50 && player.y + 50 > gems.y ) {
             console.log('you earned a gem');
-       
+       gems.sprite = 'images/Heart.png';
 
     }
 }
