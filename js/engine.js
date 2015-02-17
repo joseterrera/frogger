@@ -186,7 +186,9 @@ function checkCollisions(){
         'images/grass-block.png',
         'images/enemy-bug.png',
         'images/char-boy.png',
-        'images/Gem Orange.png'
+        'images/Gem Orange.png',
+        'images/Gem Blue.png'
+
 
     ]);
     Resources.onReady(init);

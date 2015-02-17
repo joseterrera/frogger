@@ -97,7 +97,6 @@ var Gems = function(){
     this.sprite = 'images/Gem Orange.png';
        this.x = 20 + 120 * (Math.floor(Math.random() * 4));
     this.y = 100 + 50 * (Math.floor(Math.random() * 4));
-}
  
 
 Gems.prototype.update = function(dt) {
