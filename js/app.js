@@ -115,6 +115,7 @@ Gems.prototype.render = function() {
 
 var player = new Player(200,430, 20);
 var gems = new Gems();
+var enemy = new Enemy();
 
 
 
