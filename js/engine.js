@@ -82,6 +82,7 @@ var Engine = (function(global) {
         updateEntities(dt);
         checkCollisions();
         gemCollisions();
+      
     }
 
     /* This is called by the update function  and loops through all of the
@@ -106,12 +107,12 @@ var Engine = (function(global) {
      */
 
 function checkCollisions(){
+    var lives =3;
     for(var enemy = 0; enemy < allEnemies.length;enemy++){
         if(player.x < allEnemies[enemy].x + 50 && player.x + 50 > allEnemies[enemy].x && player.y < allEnemies[enemy].y + 50 && player.y + 50 > allEnemies[enemy].y ) {
             player.reset();
             console.log('you got hit');
-            lives - 1;
-            console.log(lives);
+            console.log("you got " + lives -=1);
         }
     }
 }
@@ -120,6 +121,9 @@ function gemCollisions(){
         if(player.x < gems.x + 50 && player.x + 50 > gems.x && player.y < gems.y + 50 && player.y + 50 > gems.y ) {
             console.log('you earned a gem');
        gems.sprite = 'images/Heart.png';
+       gems.sprite.display = "none";
+
+ 
 
     }
 }
