@@ -5,7 +5,6 @@
 
 var lives = 3;
 var score = 0;
-var level = 0;
 
 
 
@@ -61,15 +60,10 @@ if(this.y < 25) {
     this.reset();
 //console.log score??
 console.log(score += 10);
-
-
-
-// $(".score").text("Score: " + score);
-
-// document.getElementById("score").innerHTML = "Score: " + score;
-// document.getElementById("score").innerHTML = "Lives: " + lives;
-
 }
+
+document.getElementById('lives').innerHTML = 'lives: ' + lives;
+document.getElementById('score').innerHTML = 'score: ' + score;
 }
 
 Player.prototype.render = function() {
@@ -79,7 +73,6 @@ Player.prototype.render = function() {
 Player.prototype.reset = function() {
     this.x = 100;
     this.y = 400;
-    level += 1;
     score += 10;
 }
 

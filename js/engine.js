@@ -57,7 +57,7 @@ var Engine = (function(global) {
          * function again as soon as the browser is able to draw another frame.
          */
         win.requestAnimationFrame(main);
-        
+
     };
 
     /* This function does some initial setup that should only occur once,
@@ -117,6 +117,7 @@ function checkCollisions(){
             if(lives === 0) {
                 console.log("game over");
                 lives = 3; 
+                score = 0;
             }
         }
     }
