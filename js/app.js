@@ -61,9 +61,13 @@ if(this.y < 25) {
     this.reset();
 //console.log score??
 console.log(score += 10);
-document.getElementById("score").innerHTML = "Score: " + score;
-document.getElementById("score").innerHTML = "Lives: " + lives;
-document.getElementById("level").innerHTML = "Level: " + level;
+
+
+
+// $(".score").text("Score: " + score);
+
+// document.getElementById("score").innerHTML = "Score: " + score;
+// document.getElementById("score").innerHTML = "Lives: " + lives;
 
 }
 }

@@ -1,6 +1,10 @@
 body {
     text-align: center;
 }
-.legend {
-	
+.lives, .score {
+
+	width: 100px;
+	background-color: #2EBCFF;
+	padding: 10px;
+	color: #fff;
 }

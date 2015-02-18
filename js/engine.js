@@ -57,6 +57,7 @@ var Engine = (function(global) {
          * function again as soon as the browser is able to draw another frame.
          */
         win.requestAnimationFrame(main);
+        
     };
 
     /* This function does some initial setup that should only occur once,
@@ -107,12 +108,16 @@ var Engine = (function(global) {
      */
 
 function checkCollisions(){
-    var lives =3;
     for(var enemy = 0; enemy < allEnemies.length;enemy++){
         if(player.x < allEnemies[enemy].x + 50 && player.x + 50 > allEnemies[enemy].x && player.y < allEnemies[enemy].y + 50 && player.y + 50 > allEnemies[enemy].y ) {
             player.reset();
             console.log('you got hit');
-            console.log("you got " + lives -=1);
+            lives -=1;
+            console.log(lives);
+            if(lives === 0) {
+                console.log("game over");
+                lives = 3; 
+            }
         }
     }
 }
@@ -121,7 +126,7 @@ function gemCollisions(){
         if(player.x < gems.x + 50 && player.x + 50 > gems.x && player.y < gems.y + 50 && player.y + 50 > gems.y ) {
             console.log('you earned a gem');
        gems.sprite = 'images/Heart.png';
-       gems.sprite.display = "none";
+
 
  
 
