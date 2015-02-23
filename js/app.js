@@ -94,6 +94,7 @@ var Gems = function(){
     this.sprite = 'images/Gem Orange.png';
        this.x = 20 + 120 * (Math.floor(Math.random() * 4));
     this.y = 100 + 50 * (Math.floor(Math.random() * 4));
+
 }
  
 
@@ -103,16 +104,20 @@ Gems.prototype.update = function(dt) {
     // all computers.
     this.x * (dt);
     this.y * (dt);
+
+
 }
 
 // Draw the gems on the screen, required method for game
 Gems.prototype.render = function() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+        
     }
 
 
 var player = new Player(200,430, 20);
 var gems = new Gems();
+
 
 
 
@@ -129,6 +134,15 @@ var allEnemies = [];
     allEnemies.push(new Enemy(-2,150, 150));
     allEnemies.push(new Enemy(-2,220, 100));
 }());
+
+
+// var allGems = [];
+// function moreGems() {
+// if (gemCollisions == true) {
+//    allGems.push(gems);
+// }
+// }
+
 // Place the player object in a variable called player
 
 

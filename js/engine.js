@@ -83,6 +83,8 @@ var Engine = (function(global) {
         updateEntities(dt);
         checkCollisions();
         gemCollisions();
+        disappearHeart();
+
       
     }
 
@@ -113,6 +115,7 @@ function checkCollisions(){
             player.reset();
             console.log('you got hit');
             lives -=1;
+            score -=10;
             console.log(lives);
             if(lives === 0) {
                 console.log("game over");
@@ -127,12 +130,31 @@ function gemCollisions(){
         if(player.x < gems.x + 50 && player.x + 50 > gems.x && player.y < gems.y + 50 && player.y + 50 > gems.y ) {
             console.log('you earned a gem');
        gems.sprite = 'images/Heart.png';
-
-
+       
  
+    }
+    }
 
+
+var timeoutID;
+function moveHeart(){
+    gems.x = 900;
+    gems.y = 900;
+}
+
+function disappearHeart(){
+    if(gems.sprite == 'images/Heart.png') {
+        timeoutID = window.setTimeout(moveHeart, 1000);
+
+       
     }
 }
+
+
+
+
+
+
 
 
     function render() {
