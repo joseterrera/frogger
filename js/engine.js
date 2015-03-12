@@ -1,3 +1,4 @@
+
 /* Engine.js
  * This file provides the game loop functionality (update entities and render),
  * draws the initial game board on the screen, and then calls the update and
@@ -13,8 +14,11 @@
  * the canvas' context (ctx) object globally available to make writing app.js
  * a little simpler to work with.
  */
+//it will be used inside of the function disappearHeart
+var timeoutID;
 
-var Engine = (function(global) {
+
+var Engine = (function (global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
      * set the canvas elements height/width and add it to the DOM.
@@ -24,10 +28,10 @@ var Engine = (function(global) {
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         lastTime;
+        canvas.width = 505;
+        canvas.height = 606;
+        doc.body.appendChild(canvas);
 
-    canvas.width = 505;
-    canvas.height = 606;
-    doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
@@ -84,8 +88,6 @@ var Engine = (function(global) {
         checkCollisions();
         gemCollisions();
         disappearHeart();
-
-      
     }
 
     /* This is called by the update function  and loops through all of the
@@ -109,53 +111,50 @@ var Engine = (function(global) {
      * they are just drawing the entire screen over and over.
      */
 
-function checkCollisions(){
-    for(var enemy = 0; enemy < allEnemies.length;enemy++){
-        if(player.x < allEnemies[enemy].x + 50 && player.x + 50 > allEnemies[enemy].x && player.y < allEnemies[enemy].y + 50 && player.y + 50 > allEnemies[enemy].y ) {
-            player.reset();
-            console.log('you got hit');
-            lives -=1;
-            score -=10;
-            console.log(lives);
-            if(lives === 0) {
-                console.log("game over");
-                lives = 3; 
-                score = 0;
+     /*
+     THis function will check when the coordinates between enemy and player collide. Score and lives are updated, and if there are no more lives left, the game resets.
+     */
+
+    function checkCollisions(){
+        for(var enemy = 0; enemy < allEnemies.length;enemy++){
+            if(player.x < allEnemies[enemy].x + 50 && player.x + 50 > allEnemies[enemy].x && player.y < allEnemies[enemy].y + 50 && player.y + 50 > allEnemies[enemy].y ) {
+                player.reset();
+                console.log('you got hit');
+                lives -=1;
+                score -=10;
+                console.log(lives);
+                if(lives === 0) {
+                    console.log("game over");
+                    lives = 3;
+                    score = 0;
+                }
             }
         }
     }
-}
-function gemCollisions(){
 
-        if(player.x < gems.x + 50 && player.x + 50 > gems.x && player.y < gems.y + 50 && player.y + 50 > gems.y ) {
-            console.log('you earned a gem');
-       gems.sprite = 'images/Heart.png';
-       
- 
+    /*
+    This function will check if player and gem collide. When they do, the gem turns into a heart.
+    */
+
+    function gemCollisions(){
+      if(player.x < gems.x + 50 && player.x + 50 > gems.x && player.y < gems.y + 50 && player.y + 50 > gems.y ) {
+          console.log('you earned a gem');
+          gems.sprite = 'images/Heart.png';
+        }
+      }
+
+      /* So that the heart doesn't stick around, we throw it off the canvas. We call moveHeart within disappearHeart. It will happen after one second. */
+
+    function moveHeart(){
+        gems.x = 900;
+        gems.y = 900;
     }
-    }
 
-
-var timeoutID;
-function moveHeart(){
-    gems.x = 900;
-    gems.y = 900;
-}
-
-function disappearHeart(){
-    if(gems.sprite == 'images/Heart.png') {
+    function disappearHeart(){
+      if(gems.sprite == 'images/Heart.png') {
         timeoutID = window.setTimeout(moveHeart, 1000);
-
-       
+      }
     }
-}
-
-
-
-
-
-
-
 
     function render() {
         /* This array holds the relative URL to the image used
