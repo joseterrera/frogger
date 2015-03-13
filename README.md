@@ -1,6 +1,13 @@
 
+For players:
 
-This is my version of frogger. Use the arrows to get to the water. You have 3 lives, and then the game resets. You can earn points if you hit a gem. I added a few more functionalities than the minimum, and there's more to be done, but I'm looking forward to moving to the next projects.
+Check out this link: http://joseterrera.github.io/frogger/ to play the game.
+This is my version of frogger. Use the arrows to get your player towards the water. You need to avoid the bugs as you move forward, or else you lose a life. If you reach the water you gain 10 points and the game resets. As an added bonus there is a big gem floating around. To earn more points you can also hit the gem, which will turn into a heart. This is as close as you get to winning.
+You have 3 lives and no limits as to how much you can score. Unless of course, you lose all 3 lives. Then, you have to start all over.
+
+For coaches:
+
+I added a few more functionalities than the minimum, and there's more to be done, but I'm looking forward to moving to the next projects.
 
 I found these two sites especially helpful:
 http://www.html5rocks.com/en/tutorials/canvas/notearsgame/

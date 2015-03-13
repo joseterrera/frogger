@@ -1,18 +1,9 @@
-// Player loses one life when colliying with the enemy
-//Player gets points for collecting a gem
-//If player collides with enemy, player loses a life.
-//After 3 times of colliding, game restarts.
-
-//These variables will be included in the functions on engine.js, and will be
-//affected, when there is a collision or the game resets.
-
 var lives = 3;
 var score = 0;
 
 // Enemies our player must avoid
 // We need to determine the enemies position and their speed.
 //We create a class for Enemy, Player, and Gems.
-
 
 var Enemy = function (x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -24,7 +15,7 @@ var Enemy = function (x, y, speed) {
     this.x = x;
     this.y = y;
     this.speed = speed;
-}
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -38,12 +29,12 @@ Enemy.prototype.update = function(dt) {
 } else {
     this.x = -100;
     }
-}
+};
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -52,35 +43,36 @@ var Player = function Player(x,y,speed) {
     this.sprite = 'images/char-boy.png';
     this.x = x,
     this.y = y,
-    this.speed = speed
-}
+    this.speed = speed;
+};
+
 
 Player.prototype.update = function(dt) {
+  //when player reaches water, game resets
+  if(this.y < 25) {
+      this.reset();
+  //console.log score
+  console.log(score += 10);
+  }
+  //when player has a collision or reaches water, these elements
+  // are updated.
+  document.getElementById('lives').innerHTML = 'lives: ' + lives;
+  document.getElementById('score').innerHTML = 'score: ' + score;
+};
 
-//when player reaches water, game resets
-if(this.y < 25) {
-    this.reset();
-//console.log score
-console.log(score += 10);
-}
-//when player has a collision or reaches water, these elements
-// are updated.
-
-document.getElementById('lives').innerHTML = 'lives: ' + lives;
-document.getElementById('score').innerHTML = 'score: ' + score;
-}
-
+// Draw the enemy on the screen, required method for game
 Player.prototype.render = function() {
  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
+
 //when the player hits a bug, the game resets.
 Player.prototype.reset = function() {
     this.x = 100;
     this.y = 400;
     score += 10;
-}
+};
 
-// keyboard effects
+// observe keystrokes
 Player.prototype.handleInput = function(key) {
     if (key === 'left' && this.x > 0) {
         this.x -= 101;
@@ -91,15 +83,16 @@ Player.prototype.handleInput = function(key) {
     } else if (key === 'down' && this.y < 400) {
         this.y += 83;
     }
-}
+};
 
+//Make a gem following the same method as in player and enemy.
 var Gems = function(){
     //we add the image, and we set it so it appears randomly
     this.sprite = 'images/Gem Orange.png';
        this.x = 20 + 120 * (Math.floor(Math.random() * 4));
     this.y = 100 + 50 * (Math.floor(Math.random() * 4));
 
-}
+};
 
 Gems.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
@@ -107,16 +100,17 @@ Gems.prototype.update = function(dt) {
     // all computers.
     this.x * (dt);
     this.y * (dt);
-}
+};
 
 // Draw the gems on the screen, required method for game
 Gems.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 //instantiate my objects.
 // Place the player object in a variable called player
 var player = new Player(200,430, 20);
+
 // Do the same for the Gems.
 var gems = new Gems();
 
