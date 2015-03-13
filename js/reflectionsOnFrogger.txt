@@ -1,6 +1,0 @@
-I had quite a bit of a hard time figuring out this game. I didn't know where to start, and I had to talk to instructors about it, and read about 2d collisions.
-This article was helpful for instance:
-http://blog.sklambert.com/html5-canvas-game-2d-collision-detection/
-The first step was getting something to appear on the page. For that I had to add the allEnemies array, which was empty and push new enemies into it. 
-For check collisions, I had to think it in a way were the two objects were on the same spot + a few pixels cause the objects ocupy more than one pixel. 
-Before moving forward with any gems, I decided to added score and lives to html.
